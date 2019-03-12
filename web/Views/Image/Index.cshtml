@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <script>
+    function reRandCode() {
+        var id = Math.ceil(Math.random() * 1000);
+        $("#imgRandCode").attr("src", "/Image/GetRandCode/" + id ); //id是必须的，哪怕服务器端根本没有使用。这样做的根本原因是 防止 浏览器因为地址相同使用本地缓存的内容，从而不向服务器端发送请求（不发送请求图片就不会改变了）。
+    }
+    </script>
+    <img id="imgRandCode" src="/Image/GetRandCode/1" /><button onclick="reRandCode()">看不清</button>
+    <input type="text" name="yzm" id="text" value="" />
+    <input type="button" value="submit" onclick="clicks()" />
+    
+    <br/>
+    请输入邮箱 <input type="text" name="email" id="email" value="" /><br/>
+    请输入内容 <textarea id="content"></textarea>
+    <input type="button" id="sendEmail" onclick="sendEmail()" value="发送" />
+    <script>
+        function clicks() {
+            console.log("click");
+            $.post("/Image/YanZheng", { yzm: $("#text").val() }, function (res) {
+                console.log(res);
+                alert(res.message);
+            }, "json");
+            reRandCode();
+        }
+        var i = 1;
+        function sendEmail() {
+            var email = $("#email").val();
+            var content = $("#content").val();
+            $.post("/Image/SendEmail", { email: email, times: i, content: content }, function (res) {
+                if (res.success) {
+                    alert("发送成功");
+                } else {
+                    alert("发送失败");
+                }
+            }, "json");
+            i++;
+        }
+    </script>
+</body>
+</html>

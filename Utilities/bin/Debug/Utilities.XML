@@ -1,0 +1,2010 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Utilities.ExcelHelper">
+            <summary>
+            简化Excel操作
+            </summary>
+        </member>
+        <member name="M:Utilities.ExcelHelper.ImportDataFromExcell(System.String,System.String)">
+            <summary>
+            从指定的Excell文件中获取数据，要求必须是规范的二维表数据且excel文件的首行为字段名
+            </summary>
+            <param name="fileUrl">服务器上的文件路径</param>
+            <param name="head">获取哪些字段的值(例如：编号,姓名,入学时间),不提供时返回所有列</param>
+            <returns>承载数据的DataSet</returns>
+        </member>
+        <member name="T:Utilities.Extensions">
+            <summary>
+            扩展代码之用
+            </summary>
+        </member>
+        <member name="M:Utilities.Extensions.ToHtml(System.Data.DataTable)">
+            <summary>
+            将DataTable对象转为html字符串
+            </summary>
+            <param name="dt">要转换的DataTable对象</param>
+            <returns>html格式的table代码</returns>
+        </member>
+        <member name="M:Utilities.Extensions.ToJsonForLayUITable``1(System.Collections.Generic.IList{``0},System.Int32,System.String)">
+            <summary>
+            为List集合扩展1个获取json字符串的方法，此方法可用于LayUI的数据表格组件
+            </summary>
+            <typeparam name="T">集合的类型</typeparam>
+            <param name="list">数据集合</param>
+            <param name="count">满足条件的数据的条数</param>
+            <param name="dateTimeFormat">统一的日期时间格式</param>
+            <returns>layui数据表格组件可用的json格式字符串</returns>
+        </member>
+        <member name="M:Utilities.Extensions.ToXml(System.Data.DataSet)">
+            <summary>
+            系统中统一禁用DataSet自己的WriteXml，使用下边定义的格式，在客户端便于解析
+            </summary>
+            <param name="ds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.Extensions.ToXml(System.Data.DataTable)">
+            <summary>
+            系统中统一禁用DataTable自己的WriteXml，使用下边定义的格式，在客户端便于解析。
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.Extensions.ToJson(System.Data.DataTable)">
+            <summary>
+            将DataTable转为字符串
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.Extensions.ToJsonForEasyUI(System.Data.DataTable,System.Int32)">
+            <summary>
+            返回可以直接用于EasyUI的分页数据
+            </summary>
+            <param name="dt">DataTable 对象</param>
+            <param name="rowCount">本次分页查询条件符合记录的总数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.Extensions.ToPDSBytes(System.String)">
+            <summary>
+            将字符串转换为字节数组
+            </summary>
+            <remarks>
+            在WebService服务端客户端的数据传输过程中，调用加密方法或者字符串中含有特殊符号，可能造成数据传输或解析错误
+            调用此法使用字节数组传输，避免此类问题。
+            </remarks>
+            <param name="str">源字符串</param>
+            <returns>字节数组</returns>
+        </member>
+        <member name="M:Utilities.Extensions.ToPDSString(System.Byte[])">
+            <summary>
+            转换为字符串
+            </summary>
+            <remarks>
+            这是ToPDSBytes方法的反向方法
+            </remarks>
+            <seealso cref="!:ToPDSBytes()"/>
+            <param name="bs">源字节数组</param>
+            <returns>字符串</returns>
+        </member>
+        <member name="T:Utilities.ImageHelper">
+            <summary>
+            对图片的所有处理操作
+            </summary>
+        </member>
+        <member name="M:Utilities.ImageHelper.CreateImage(System.String,System.Int32,System.Int32)">
+            <summary>
+            生成网页验证码数据
+            </summary>
+            <param name="randomCode">验证码上显示的内容</param>
+            <param name="imgWdith">宽度</param>
+            <param name="imgHeight">高度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.GetImage(System.String)">
+            <summary>
+            获取指定路径的位图对象
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.ToImage(System.Byte[])">
+            <summary>
+            获取指定字节数组的位图
+            </summary>
+            <param name="bs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.GetImageData(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.SavePng(System.Drawing.Image,System.String)">
+            <summary>
+            将Image图像保存为png格式的文件
+            </summary>
+            <param name="img"></param>
+            <param name="path"></param>
+        </member>
+        <member name="M:Utilities.ImageHelper.SaveBmp(System.Drawing.Image,System.String)">
+            <summary>
+            将Image图像保存为bmp格式的文件
+            </summary>
+            <param name="img"></param>
+            <param name="path"></param>
+        </member>
+        <member name="M:Utilities.ImageHelper.SaveJpg(System.Drawing.Image,System.String,System.Int64)">
+            <summary>
+            将Image图像保存为jpg格式的文件
+            </summary>
+            <param name="img">Image对象</param>
+            <param name="path">要保存的图片路径</param>
+            <param name="quality">质量(0~100)</param>
+        </member>
+        <member name="M:Utilities.ImageHelper.GetEncoderInfo(System.String)">
+            <summary>
+            获取ImageCodecInfo信息
+            </summary>
+            <param name="mimeType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.CutForSquare(System.IO.Stream,System.String,System.Int32,System.Int32)">
+            <summary>
+            正方型裁剪
+            以图片中心为轴心，截取正方型，然后等比缩放(常用于web开发中的头像截取)
+            </summary>
+            <param name="fromFile">原图Stream对象</param>
+            <param name="fileSaveUrl">缩略图存放地址</param>
+            <param name="side">指定的边长（正方型）</param>
+            <param name="quality">质量（范围0-100）</param>
+        </member>
+        <member name="M:Utilities.ImageHelper.CutForCustom(System.IO.Stream,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            指定长宽裁剪(按模版比例最大范围的裁剪图片并缩放至模版尺寸)
+            </summary>
+            <param name="fromFile">原图Stream对象</param>
+            <param name="fileSaveUrl">保存路径</param>
+            <param name="maxWidth">最大宽(单位:px)</param>
+            <param name="maxHeight">最大高(单位:px)</param>
+            <param name="quality">质量（范围0-100）</param>
+        </member>
+        <member name="M:Utilities.ImageHelper.CutForCustom(System.Drawing.Image,System.String,System.Int32,System.Int32,System.Int32,System.Single)">
+            <summary>
+            按模版比例最大范围的裁剪图片并缩放至模版尺寸
+            </summary>
+            <param name="initImage">原始图片</param>
+            <param name="fileSaveUrl">要保存的路径</param>
+            <param name="maxWidth">最大宽度px</param>
+            <param name="maxHeight">最大高度px</param>
+            <param name="quality">图片质量（范围0-100）</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Utilities.ImageHelper.ZoomAuto(System.IO.Stream,System.String,System.Double,System.Double,System.String,System.String)" -->
+        <member name="M:Utilities.ImageHelper.SavePartOfImageRec(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            截取源图中指定部分区域的图片，并存储为指定的文件。
+            </summary>
+            <param name="sourceFileName">源图地址</param>
+            <param name="saveFilePath">区域图的地址</param>
+            <param name="width">截取图片的宽度</param>
+            <param name="height">截取图片的高度</param>
+            <param name="offsetX">开始截取图片的X坐标</param>
+            <param name="offsetY">开始截取图片的Y坐标</param>
+            <param name="qu">保存质量</param>
+            <param name="xdpi">横向dpi值</param>
+            <param name="ydpi">纵向dpi值</param>
+        </member>
+        <member name="M:Utilities.ImageHelper.GetPartOfImageRec(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取一张图片的指定部分，在一个指定位置画一个要截取的图像       
+            </summary>
+            <param name="sourceFileName">原始图片路径名称</param>
+            <param name="width">截取图片的宽度</param>
+            <param name="height">截取图片的高度</param>
+            <param name="offsetX">开始截取图片的X坐标</param>
+            <param name="offsetY">开始截取图片的Y坐标</param>
+            <returns>指定部分转换成的字节数组</returns>
+            <param name="qu">保存质量</param>
+            <param name="xdpi">横向dpi值</param>
+            <param name="ydpi">纵向dpi值</param>
+        </member>
+        <member name="M:Utilities.ImageHelper.SetImageColorBrim(System.Drawing.Image,System.Drawing.Color,System.Drawing.Color,System.Int32)">
+            <summary>
+            设置图形颜色  边缘的色彩更换成新的颜色
+            </summary>
+            <param name="p_Image">图片</param>
+            <param name="p_OldColor">老的边缘色彩</param>
+            <param name="p_NewColor">新的边缘色彩</param>
+            <param name="p_Float">溶差</param>
+            <returns>清理后的图形</returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.SetImageColorAll(System.Drawing.Image,System.Drawing.Color,System.Drawing.Color,System.Int32)">
+            <summary>
+            设置图形颜色  所有的色彩更换成新的颜色
+            </summary>
+            <param name="p_Image">图片</param>
+            <param name="p_OdlColor">老的颜色</param>
+            <param name="p_NewColor">新的颜色</param>
+            <param name="p_Float">溶差</param>
+            <returns>清理后的图形</returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.SetImageColorPoint(System.Drawing.Image,System.Drawing.Point,System.Drawing.Color,System.Int32)">
+            <summary>
+            设置图形颜色  坐标的颜色更换成新的色彩 （漏斗）
+            </summary>
+            <param name="p_Image">新图形</param>
+            <param name="p_Point">位置</param>
+            <param name="p_NewColor">新的色彩</param>
+            <param name="p_Float">溶差</param>
+            <returns>清理后的图形</returns>
+        </member>
+        <member name="M:Utilities.ImageHelper.SetImageColorPoint(System.Byte[],System.Int32,System.Collections.Generic.Stack{System.Drawing.Point},System.Int32,System.Int32,System.Drawing.Color,System.Drawing.Color,System.Int32)">
+            <summary>
+            SetImageColorPoint 循环调用 检查新的坐标是否符合条件 符合条件会写入栈p_ColorStack 并更改颜色
+            </summary>
+            <param name="p_DataBytes">数据区</param>
+            <param name="p_Stride">行扫描字节数</param>
+            <param name="p_ColorStack">需要检查的位置栈</param>
+            <param name="p_X">位置X</param>
+            <param name="p_Y">位置Y</param>
+            <param name="p_OldColor">老色彩</param>
+            <param name="p_NewColor">新色彩</param>
+            <param name="p_Float">溶差</param>
+        </member>
+        <member name="M:Utilities.ImageHelper.ScanColor(System.Drawing.Color,System.Drawing.Color,System.Int32)">
+            <summary>
+            检查色彩(可以根据这个更改比较方式
+            </summary>
+            <param name="p_CurrentlyColor">当前色彩</param>
+            <param name="p_CompareColor">比较色彩</param>
+            <param name="p_Float">溶差</param>
+            <returns></returns>
+        </member>
+        <member name="T:Utilities.NetHelper">
+            <summary>
+            邮件发送的帮助类
+            </summary>
+        </member>
+        <member name="M:Utilities.NetHelper.DownContent(System.String)">
+            <summary>
+            下载指定路径的网页内容
+            </summary>
+            <param name="url">网页路径，可以是html、css、js等</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.NetHelper.SendEMail(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary> 
+            发送邮件程序 
+            </summary> 
+            <param name="from">发送人邮件地址</param> 
+            <param name="fromName">发送人显示名称</param> 
+            <param name="to">发送给谁（邮件地址）</param> 
+            <param name="subject">标题</param> 
+            <param name="body">内容</param> 
+            <param name="username">邮件登录名</param> 
+            <param name="password">邮件密码</param> 
+            <param name="server">邮件服务器,例如：smtp.126.com </param> 
+            <param name="fujian">附件,例如： C:\\a.txt;D:\\b.rar</param> 
+            <param name="port">端口,例如：25</param> 
+            <returns>是否发送成功</returns> 
+        </member>
+        <member name="T:Utilities.MoneyHelper">
+            <summary>
+            此类实现金额的阿拉伯数字到大写汉字的转换
+            </summary>
+        </member>
+        <member name="M:Utilities.MoneyHelper.ConvertSum(System.String)">
+            <summary>
+            转换数字金额主函数（包括小数）
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.MoneyHelper.ConvertXiaoShu(System.String)">
+            <summary>
+            需要转换的小数部分数字字符串
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.MoneyHelper.IsPositveDecimal(System.String)">
+            <summary>
+            判断是否是正数字字符串 
+            </summary>
+            <param name="str"></param>
+            <returns>如果是数字，返回true，否则返回false </returns>
+        </member>
+        <member name="M:Utilities.MoneyHelper.ConvertData(System.String)">
+            转换数字（整数） 
+            需要转换的整数数字字符串 
+            转换成中文大写后的字符串 
+        </member>
+        <member name="M:Utilities.MoneyHelper.ConvertDigit(System.String)">
+            <summary>
+            转换的字符串（四位以内）
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.MoneyHelper.Convert4Digit(System.String)">
+            <summary>
+            转换四位数字
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.MoneyHelper.Convert3Digit(System.String)">
+            <summary>
+            转换三位数字
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.MoneyHelper.Convert2Digit(System.String)">
+            <summary>
+            转换二位数字
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.MoneyHelper.ConvertChinese(System.String)">
+            <summary>
+            将一位数字转换成中文大写数字 
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Utilities.LogHelper">
+            <summary>
+            封装NLog组件进行日志管理
+            </summary>
+        </member>
+        <member name="M:Utilities.LogHelper.#ctor(NLog.Logger)">
+            <summary>
+            私有构造方法，只给当前类的其他构造方法调用
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Utilities.LogHelper.#ctor(System.String)">
+            <summary>
+            通过指定的名称来创建日志对象
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:Utilities.LogHelper.Default">
+            <summary>
+            提供1个默认的静态使用方式，例如：LogHelper.Default.Info("info");
+            </summary>
+        </member>
+        <member name="M:Utilities.LogHelper.#cctor">
+            <summary>
+            私有的静态构造方法，初始化Default对象
+            </summary>
+        </member>
+        <member name="M:Utilities.LogHelper.Trace(System.String,System.Object[])">
+            <summary>
+            Trace等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="args">其他参数</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Trace(System.String,System.Exception)">
+            <summary>
+            Trace等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="err">需要记录的异常信息</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Debug(System.String,System.Object[])">
+            <summary>
+            Debug等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="args">其他参数</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Debug(System.String,System.Exception)">
+            <summary>
+            Debug等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="err">需要记录的异常信息</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Info(System.String,System.Object[])">
+            <summary>
+            Info等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="args">其他参数</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Info(System.String,System.Exception)">
+            <summary>
+            Info等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="err">需要记录的异常信息</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Warn(System.String,System.Object[])">
+            <summary>
+            Warn等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="args">其他参数</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Warn(System.String,System.Exception)">
+            <summary>
+            Warn等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="err">需要记录的异常信息</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Error(System.String,System.Object[])">
+            <summary>
+            Error等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="args">其他参数</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Error(System.String,System.Exception)">
+            <summary>
+            Error等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="err">需要记录的异常信息</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Fatal(System.String,System.Object[])">
+            <summary>
+            Fatal等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="args">其他参数</param>
+        </member>
+        <member name="M:Utilities.LogHelper.Fatal(System.String,System.Exception)">
+            <summary>
+            Fatal等级写日志
+            </summary>
+            <param name="msg">日志信息</param>
+            <param name="err">需要记录的异常信息</param>
+        </member>
+        <member name="T:Utilities.PdfHelper">
+            <summary>
+            需要使用nuget获取itextsharp
+            </summary>
+        </member>
+        <member name="M:Utilities.PdfHelper.ConvertHtmlTextToPdf(System.String)">
+            <summary>
+            注意事项
+            1:html标签必须闭合，符合规范
+            2:目前暂不支持link样式导入，只能写style
+            使用示例：
+            WebClient wc = new WebClient();
+            从网址下载Html字串
+            string htmlText = wc.DownloadString("http://localhost:6953/test.html");
+            byte[] pdfFile = PdfHelper.ConvertHtmlTextToPdf(htmlText);
+            return File(pdfFile, "application/pdf", "测试.pdf");
+            </summary>
+            <param name="htmlText">html格式的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Utilities.UnicodeFontFactory">
+            <summary>
+            字体工厂类
+            </summary>
+        </member>
+        <member name="F:Utilities.UnicodeFontFactory.yh">
+            <summary>
+            定义一个pdf使用的字体，这里选择的是微软雅黑
+            </summary>
+        </member>
+        <member name="F:Utilities.UnicodeFontFactory.标楷体Path">
+            <summary>
+            定义一个pdf使用的字体，这里选择的是楷体
+            </summary>
+        </member>
+        <member name="M:Utilities.UnicodeFontFactory.GetFont(System.String,System.String,System.Boolean,System.Single,System.Int32,iTextSharp.text.BaseColor,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="fontname"></param>
+            <param name="encoding"></param>
+            <param name="embedded"></param>
+            <param name="size"></param>
+            <param name="style"></param>
+            <param name="color"></param>
+            <param name="cached"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Utilities.PinYinConverter">
+            <summary>
+            汉字拼音转换类
+            </summary>
+        </member>
+        <member name="F:Utilities.PinYinConverter.otherChinese">
+            <summary>
+            二级汉字数组
+            </summary>
+        </member>
+        <member name="F:Utilities.PinYinConverter.otherPinYin">
+            <summary>
+            二级汉字对应拼音数组
+            </summary>
+        </member>
+        <member name="M:Utilities.PinYinConverter.GetFirst(System.Char)">
+            <summary>
+            取拼音第一个字段
+            </summary>        
+            <param name="ch"></param>        
+            <returns></returns>        
+        </member>
+        <member name="M:Utilities.PinYinConverter.GetFirst(System.String)">
+            <summary>
+            取拼音第一个字段
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.PinYinConverter.Get(System.Char)">
+            <summary>
+            获取单字拼音
+            </summary>
+            <param name="ch"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.PinYinConverter.Get(System.String)">
+            <summary>
+            把汉字转换成拼音(全拼)
+            </summary>
+            <param name="str">汉字字符串</param>
+            <returns>转换后的拼音(全拼)字符串</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Utilities.PDataSet" -->
+        <member name="M:Utilities.PDataSet.#ctor(System.String)">
+            <summary>
+            从指定格式的xml字符串中，生成自定义的PDataSet对象
+            </summary>
+            <seealso cref="!:TransferConvert.ToXml(this DataSet ds)"/>
+            <param name="xml">由TransferConvert.ToXml方法生成的xml字符串</param>
+        </member>
+        <member name="P:Utilities.PDataSet.Tables">
+            <summary>
+            获取数据集中的所有表
+            </summary>
+        </member>
+        <member name="M:Utilities.PDataSet.GetTable(System.String)">
+            <summary>
+            获取指定名称的数据表
+            </summary>
+            <param name="tableName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Utilities.PDataSet.Result">
+            <summary>
+            获取原始的构造字符串
+            </summary>
+        </member>
+        <member name="T:Utilities.PDataTable">
+            <summary>
+            PDataSet中表的定义
+            </summary>
+        </member>
+        <member name="M:Utilities.PDataTable.#ctor">
+            <summary>
+            创建表对象
+            </summary>
+        </member>
+        <member name="M:Utilities.PDataTable.#ctor(System.Int32)">
+            <summary>
+            创建指定列数的表对象
+            </summary>
+            <param name="columnCount"></param>
+        </member>
+        <member name="P:Utilities.PDataTable.Name">
+            <summary>
+            获取或设置表名称
+            </summary>
+        </member>
+        <member name="P:Utilities.PDataTable.Columns">
+            <summary>
+            获取或设置列集合
+            </summary>
+        </member>
+        <member name="P:Utilities.PDataTable.Rows">
+            <summary>
+            获取此表的数据行
+            </summary>
+        </member>
+        <member name="M:Utilities.PDataTable.NewRow">
+            <summary>
+            创建一个新数据行
+            </summary>
+        </member>
+        <member name="M:Utilities.PDataTable.NewColumn(System.String)">
+            <summary>
+            向表中添加列
+            </summary>
+            <param name="columnName">列名</param>
+        </member>
+        <member name="M:Utilities.PDataTable.NewColumn(System.String,System.String)">
+            <summary>
+            向表中添加列
+            </summary>
+            <param name="columnName">列名</param>
+            <param name="defValue">该列的默认值</param>
+            <returns>true：添加成功 false:已经存在同名列</returns>
+        </member>
+        <member name="M:Utilities.PDataTable.NewColumn(System.String,System.String,System.String)">
+            <summary>
+            向表中添加列
+            </summary>
+            <param name="columnName">列名</param>
+            <param name="defValue">默认值</param>
+            <param name="columnType">列类型</param>
+        </member>
+        <member name="T:Utilities.PDataRow">
+            <summary>
+            PDataSet中行的定义
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Utilities.PDataRow.#ctor(System.String)" -->
+        <member name="P:Utilities.PDataRow._columnNames">
+            <summary>
+            获取隶属表的列名
+            </summary>
+        </member>
+        <member name="T:Utilities.PDataColumn">
+            <summary>
+            PDataSet中列的定义
+            </summary>
+        </member>
+        <member name="P:Utilities.PDataColumn.Name">
+            <summary>
+            列名
+            </summary>
+        </member>
+        <member name="P:Utilities.PDataColumn.DataType">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="T:Utilities.SecurityHelper">
+            <summary>
+            安全加密帮助类
+            </summary>
+        </member>
+        <member name="T:Utilities.SecurityHelper.DESEncrypt">
+            <summary> 
+            DES加解密工具类
+            </summary> 
+        </member>
+        <member name="M:Utilities.SecurityHelper.DESEncrypt.Encode(System.String,System.String)">
+            <summary>
+            DES加密字符串
+            </summary>
+            <param name="encryptString">待加密的字符串</param>
+            <param name="encryptKey">加密密钥,要求为8位</param>
+            <returns>加密成功返回加密后的字符串,失败返回源串</returns>
+        </member>
+        <member name="M:Utilities.SecurityHelper.DESEncrypt.Decode(System.String,System.String)">
+            <summary>
+            DES解密字符串
+            </summary>
+            <param name="decryptString">待解密的字符串</param>
+            <param name="decryptKey">解密密钥,要求为8位,和加密密钥相同</param>
+            <returns>解密成功返回解密后的字符串,失败返源串</returns>
+        </member>
+        <member name="T:Utilities.SecurityHelper.AESEncrypt">
+            <summary> 
+            AES加解密工具类
+            </summary> 
+        </member>
+        <member name="M:Utilities.SecurityHelper.AESEncrypt.Encode(System.String,System.String)">
+            <summary>
+            加密指定字符串
+            </summary>
+            <param name="encryptString">要加密的字符串</param>
+            <param name="encryptKey">密钥</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:Utilities.SecurityHelper.AESEncrypt.Decode(System.String,System.String)">
+            <summary>
+            解密指定的字符串
+            </summary>
+            <param name="decryptString">调用Encode加密方法加密过的字符串</param>
+            <param name="decryptKey">密钥</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="T:Utilities.SecurityHelper.MD5">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Utilities.SecurityHelper.MD5.Encrypt(System.String)">
+            <summary>
+            加密字符串
+            </summary>
+            <param name="sourceString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.SecurityHelper.MD5.Encrypt16(System.String)">
+            <summary>
+            16位MD5加密
+            </summary>
+            <param name="sourceString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Utilities.SqlHelper">
+            <summary>
+            SqlHelper 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:Utilities.SqlHelper.GetObjectsPaged(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            数据分页取的是全部列
+            </summary>
+            <param name="objName">您要查询的表或试图</param>
+            <param name="colNames">您要取得列名例如：Id,Name</param>
+            <param name="whereSql">条件语句例如:"where price>10"</param>
+            <param name="orderSql">排序语句例如:"order by price desc,BTime"</param>
+            <param name="pageSize">每页记录数</param>
+            <param name="pageNum">当前页码</param>
+            <param name="recordCount">满足条件的记录总数量</param>
+            <returns>承载数据的DataTable对象</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns no resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:
+             int result = ExecuteNonQuery(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteSqlsInTransaction(System.String,System.String[])">
+            <summary>
+            在一个事物中执行一组Sql语句
+            </summary>
+            <param name="connectionString">连接字符串</param>
+            <param name="cmdTexts">sql语句数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns no resultset) against an existing database connection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="conn">an existing database connection</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns no resultset) using an existing SQL Transaction 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="trans">an existing sql transaction</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteDataSet(System.String,System.Data.CommandType,System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+             Get a DataSet
+            </summary>
+            <param name="connectionString"></param>
+            <param name="cmdType"></param>
+            <param name="cmdText"></param>
+            <param name="tableName"></param>
+            <param name="commandParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteDataSet(System.String,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Get a DataSet
+            </summary>
+            <param name="connectionString"></param>
+            <param name="trans"></param>
+            <param name="cmdType"></param>
+            <param name="cmdText"></param>
+            <param name="tableName"></param>
+            <param name="commandParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteReader(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns a resultset against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             SqlDataReader r = ExecuteReader(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>A SqlDataReader containing the results</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteScalar(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns the first column of the first record against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             Object obj = ExecuteScalar(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">a valid connection string for a SqlConnection</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>An object that should be converted to the expected type using Convert.To{Type}</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.ExecuteScalar(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand that returns the first column of the first record against an existing database connection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             Object obj = ExecuteScalar(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="conn">an existing database connection</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParameters">an array of SqlParamters used to execute the command</param>
+            <returns>An object that should be converted to the expected type using Convert.To{Type}</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.CacheParameters(System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            add parameter array to the cache
+            </summary>
+            <param name="cacheKey">Key to the parameter cache</param>
+            <param name="cmdParms">an array of SqlParamters to be cached</param>
+        </member>
+        <member name="M:Utilities.SqlHelper.GetCachedParameters(System.String)">
+            <summary>
+            Retrieve cached parameters
+            </summary>
+            <param name="cacheKey">key used to lookup parameters</param>
+            <returns>Cached SqlParamters array</returns>
+        </member>
+        <member name="M:Utilities.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Prepare a command for execution
+            </summary>
+            <param name="cmd">SqlCommand object</param>
+            <param name="conn">SqlConnection object</param>
+            <param name="trans">SqlTransaction object</param>
+            <param name="cmdType">Cmd type e.g. stored procedure or text</param>
+            <param name="cmdText">Command text, e.g. Select * from Products</param>
+            <param name="cmdParms">SqlParameters to use in the command</param>
+        </member>
+        <member name="T:Utilities.StringHelper">
+            <summary>
+            字符串帮助类
+            </summary>
+        </member>
+        <member name="F:Utilities.StringHelper.RegexEamil">
+            <summary>
+            邮箱地址正则表达式
+            </summary>
+        </member>
+        <member name="F:Utilities.StringHelper.RegexMobilePhone">
+            <summary>
+            手机号正则表达式
+            </summary>
+        </member>
+        <member name="F:Utilities.StringHelper.RegexPhone">
+            <summary>
+            固话号正则表达式
+            </summary>
+        </member>
+        <member name="F:Utilities.StringHelper.RegexIP">
+            <summary>
+            IP正则表达式
+            </summary>
+        </member>
+        <member name="F:Utilities.StringHelper.RegexDate">
+            <summary>
+            日期正则表达式 yyyy-MM-dd,不是很准确
+            </summary>
+        </member>
+        <member name="F:Utilities.StringHelper.RegexNumeric">
+            <summary>
+            数值(包括整数和小数)正则表达式
+            </summary>
+        </member>
+        <member name="F:Utilities.StringHelper.RegexZipcoder">
+            <summary>
+            邮政编码正则表达式
+            </summary>
+        </member>
+        <member name="M:Utilities.StringHelper.ToSqlIdString(System.String[])">
+            <summary>
+            将字符串数组拼接成用单引号括起来的字符串。
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ToChoiceAnswer(System.String)">
+            <summary>
+            处理答案
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConvertStreamToString(System.IO.Stream)">
+            <summary>
+            将 Stream 转化成 string
+            </summary>
+            <param name="s">Stream流</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.Strings(System.Char,System.Int32)">
+            <summary>
+            输出由同一字符组成的指定长度的字符串
+            </summary>
+            <param name="Char">输出字符，如：A</param>
+            <param name="i">指定长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetLen(System.String)">
+            <summary>
+            返回字符串的字节长度
+            </summary>
+            <param name="str">指定字符串</param>
+            <returns>字节个数</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetRandomNum(System.Int32)">
+            <summary>
+            获取指定长度的纯数字随机数字串
+            </summary>
+            <param name="intLong">数字串长度</param>
+            <returns>字符串</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetRandomLetters(System.Int32)">
+            <summary>
+            获取一个由26个小写字母组成的指定长度的随即字符串
+            </summary>
+            <param name="intLong">指定长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetRandomNumAndLetters(System.Int32)">
+            <summary>
+            获取一个由数字和26个小写字母组成的指定长度的随即字符串
+            </summary>
+            <param name="intLong">指定长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.IsValidEmail(System.String)">
+            <summary>
+            判断字符串是否为有效的邮件地址
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.IsValidURL(System.String)">
+            <summary>
+            判断字符串是否为有效的URL地址
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.IsValidInt(System.String)">
+            <summary>
+            判断字符串是否为Int类型的
+            </summary>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.IsNum(System.String)">
+            <summary>
+            检测字符串是否全为正整数
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.IsDouble(System.String)">
+            <summary>
+            检测字符串是否全为数字型
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.IsValiable(System.String,System.String)">
+            <summary>
+            判断输入的字符串是否完全匹配正则
+            </summary>
+            <param name="RegexExpression">正则表达式</param>
+            <param name="str">待判断的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConvertURL(System.String,System.String)">
+            <summary>
+            转换代码中的URL路径为绝对URL路径
+            </summary>
+            <param name="sourceString">源代码</param>
+            <param name="replaceURL">替换要添加的URL</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetImgFileUrl(System.String)">
+            <summary>
+            获取代码中所有图片的以HTTP开头的URL地址
+            </summary>
+            <param name="sourceString">代码内容</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetFileUrlPath(System.String)">
+            <summary>
+            获取代码中所有文件的以HTTP开头的URL地址
+            </summary>
+            <param name="sourceString">代码内容</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.SqlParame(System.String)">
+            <summary>
+            获取一条SQL语句中的所参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.OracleParame(System.String)">
+            <summary>
+            获取一条SQL语句中的所参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConvertText(System.String)">
+            <summary>
+            将HTML代码转化成纯文本
+            </summary>
+            <param name="sourceHTML">HTML代码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConvertXmlString(System.String)">
+            <summary>
+            封装XML数据串
+            </summary>
+            <param name="str"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.HtmlEncode(System.String)">
+            <summary>
+            对字符串进行 HTML 编码操作，用于无法使用Server类的场景。
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.HtmlDecode(System.String)">
+            <summary>
+            对 HTML 字符串进行解码操作，用于无法使用Server类的场景。
+            </summary>
+            <param name="str">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConvertScript(System.String)">
+            <summary>
+            对脚本程序进行处理
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.FilterString(System.String,System.String[])">
+            <summary>
+            过滤屏蔽的字符串
+            </summary>
+            <param name="source"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetColorString">
+            <summary>
+            随机产生一个Color字符串。例如 ffee99
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetSplitString(System.String,System.Int32)">
+            <summary>
+            对source，按照“＃”进行分割，获取第num个字符串的值
+            </summary>
+            <param name="source"></param>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetSplitString(System.String,System.String,System.Int32)">
+            <summary>
+            对source，按照指定的字符串以split进行分割，获取第num个字符串的值
+            </summary>
+            <param name="source"></param>
+            <param name="split"></param>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetUniqueString">
+            <summary>
+            获取一个唯一值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.FormatNUM(System.Int64)">
+            <summary>
+            格式化占用空间大小的输出
+            </summary>
+            <param name="size">大小</param>
+            <returns>返回 String</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetFirstLetter(System.String)">
+            <summary>
+            获取指定汉字拼音的首字母
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetFileName(System.String)">
+            <summary>
+            获取文件名
+            </summary>
+            <param name="filePath">包含有文件名的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetExtName(System.String)">
+            <summary>
+            获取fileName的扩展名
+            </summary>
+            <param name="fileName">文件名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetSubstring(System.String,System.Int32)">
+            <summary>
+            获取指定data中前len个字符构成的字符串
+            </summary>
+            <param name="data"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ToNum(System.Int32,System.Int32)">
+            <summary>
+            获取指定data的指定类型的字符编号
+            </summary>
+            <param name="data">从1到999</param>
+            <param name="type">从1到8</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConvertSql(System.String)">
+            <summary>
+            对传递的参数字符串进行处理，防止注入式攻击
+            </summary>
+            <param name="str">传递的参数字符串</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetSafeCode(System.String)">
+            <summary>
+            移除不安全代码,防止页面攻击
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.RemoveHtmlCode(System.String)">
+            <summary>
+            移除HTML标记
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.RemoveHtmlCode(System.String,System.String[])">
+            <summary>
+            移除HTML代码的某些标记
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.RemoveHtmlAttributeCode(System.String,System.String[])">
+            <summary>
+            移除所有标签的某些属性
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.RemoveHtmlAttributeCode(System.String,System.String,System.String[])">
+            <summary>
+            移除指定标签的某些属性
+            </summary>
+            <param name="htmlStr">html格式的字符串</param>
+            <param name="label">指定的标签</param>
+            <param name="attributes">属性名称集合</param>
+            <returns>移除后的新字符串</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.RemoveHtmlAttributeCode(System.String,System.String,System.String)">
+            <summary>
+            移除指定标签的某个属性
+            </summary>
+            <param name="htmlStr">html格式的字符串</param>
+            <param name="label">指定的标签</param>
+            <param name="attribute">属性名称</param>
+            <returns>移除后的新字符串</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.RemoveUrlLink(System.String,System.String)">
+            <summary>
+            移除除了指定域名的其他URL
+            </summary>
+            <param name="str">Html字符串</param>
+            <param name="myDomain">自己的域名，如：fund123.cn</param>
+            <returns>结果字符串</returns>
+        </member>
+        <member name="M:Utilities.StringHelper.HasUrlLink(System.String,System.String)">
+            <summary>
+            判断是否存在别人的连接
+            </summary>
+            <param name="str"></param>
+            <param name="myDomain"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.DealOutSiteURL(System.String,System.String)">
+            <summary>
+            处理外网连接替换
+            </summary>
+            <param name="str"></param>
+            <param name="myDomain"></param>
+        </member>
+        <member name="M:Utilities.StringHelper.ConstructSplitSQL(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            获取分页操作SQL语句(对于排序的字段必须建立索引，优化分页提取方式)
+            </summary>
+            <param name="tblName">操作表名称</param>
+            <param name="fldName">排序的索引字段</param>
+            <param name="PageIndex">当前页</param>
+            <param name="PageSize">每页显示记录数</param>
+            <param name="totalRecord">总记录数</param>
+            <param name="OrderType">排序方式(0升序，1为降序)</param>
+            <param name="strWhere">检索的条件语句，不需要再加WHERE关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConstructSplitSQL(System.String,System.String,System.Int32,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            获取分页操作SQL语句(对于排序的字段必须建立索引)
+            </summary>
+            <param name="tblName">操作表名</param>
+            <param name="fldName">操作索引字段名称</param>
+            <param name="PageIndex">当前页</param>
+            <param name="PageSize">每页显示记录数</param>
+            <param name="rtnFields">返回字段集合，中间用逗号格开。返回全部用“*”</param>
+            <param name="OrderType">排序方式(0升序，1为降序)</param>
+            <param name="strWhere">检索的条件语句，不需要再加WHERE关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConstructSplitSQL(System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            获取分页操作SQL语句(对于排序的字段必须建立索引)
+            </summary>
+            <param name="tblName">操作表名</param>
+            <param name="fldName">操作索引字段名称</param>
+            <param name="unionCondition">用于连接的条件，例如: LEFT JOIN UserInfo u ON (u.UserID = b.UserID)</param>
+            <param name="PageIndex">当前页</param>
+            <param name="PageSize">每页显示记录数</param>
+            <param name="rtnFields">返回字段集合，中间用逗号格开。返回全部用“*”</param>
+            <param name="OrderType">排序方式，0升序，1为降序</param>
+            <param name="strWhere">检索的条件语句，不需要再加WHERE关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConstructSplitSQL_TOP(System.String,System.String,System.Int32,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            获取分页操作SQL语句(对于排序的字段必须建立索引)
+            </summary>
+            <param name="tblName">操作表名</param>
+            <param name="fldName">操作索引字段名称</param>
+            <param name="PageIndex">当前页</param>
+            <param name="PageSize">每页显示记录数</param>
+            <param name="rtnFields">返回字段集合，中间用逗号格开。返回全部用“*”</param>
+            <param name="OrderType">排序方式(0升序，1为降序)</param>
+            <param name="strWhere">检索的条件语句，不需要再加WHERE关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.ConstructSplitSQL_sort(System.String,System.String,System.Int32,System.Int32,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            获取分页操作SQL语句(对于排序的字段必须建立索引)
+            </summary>
+            <param name="tblName">操作表名</param>
+            <param name="fldName">操作索引字段名称</param>
+            <param name="PageIndex">当前页</param>
+            <param name="PageSize">每页显示记录数</param>
+            <param name="rtnFields">返回字段集合，中间用逗号格开。返回全部用“*”</param>
+            <param name="OrderType">排序方式(0升序，1为降序)</param>
+            <param name="sort">排序表达式</param>
+            <param name="strWhere">检索的条件语句，不需要再加WHERE关键字</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.StringHelper.GetSubString(System.String,System.Int32,System.String)">
+            <summary>
+            服务于AES/DES加解密类的方法
+            </summary>
+            <param name="p_SrcString"></param>
+            <param name="p_Length"></param>
+            <param name="p_TailString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Utilities.TimeUtility">
+            <summary>
+            时间日期管理类，主要用来进行年月日与周的换算。
+            YCL 20080810
+            </summary>
+        </member>
+        <member name="M:Utilities.TimeUtility.GetBeginAndEnd(System.Int32,System.Int32,System.DateTime@,System.DateTime@,System.String)">
+            <summary>
+            获取一个月的开始和结束时间
+            </summary>
+            <param name="year"></param>
+            <param name="month"></param>
+            <param name="begin"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:Utilities.TimeUtility.Get8CTime(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取如：“2009-01-01”格式的日期字符串
+            </summary>
+            <param name="year">年份</param>
+            <param name="month">月份</param>
+            <param name="day">日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.Get8CTime(System.DateTime)">
+            <summary>
+            获取如：“2009-01-01”格式的日期字符串
+            </summary>
+            <param name="time">日期</param>
+            <returns>满足8个字符的日期</returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.SetDayRange(System.DateTime,System.DateTime@,System.DateTime@)">
+            <summary>
+            设置指定日期所对应的开始和终止时分秒
+            </summary>
+            <param name="dt"></param>
+            <param name="b"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Utilities.TimeUtility.SetWeekRange(System.DateTime,System.DateTime@,System.DateTime@)">
+            <summary>
+            计算指定日期所在周的开始时间和终止时间
+            </summary>
+            <param name="time">指定的日期</param>
+            <param name="begin">本周的开始时间</param>
+            <param name="end">本周的截止时间</param>
+            <returns>指定日期在当前月中是第几周(本月有几个周六，就有几周)</returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.SetWeekRange(System.Int32,System.Int32,System.Int32,System.DateTime@,System.DateTime@)">
+            <summary>
+            计算指定年，月，周的开始时间和终止时间
+            </summary>
+            <param name="year">年份</param>
+            <param name="month">月份</param>
+            <param name="weeks">周</param>
+            <param name="begin">计算得出的开始时间</param>
+            <param name="end">计算得出的截止时间</param>
+        </member>
+        <member name="M:Utilities.TimeUtility.GetWeeks(System.Int32,System.Int32)">
+            <summary>
+            获取指定年的月共有几周(指定月份有几个周六就是有几周)
+            </summary>
+            <param name="year">年份</param>
+            <param name="month">月份</param>
+            <returns>共几周</returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.GetFirstSaturday(System.Int32,System.Int32)">
+            <summary>
+            找到指定年月分的第一个周六
+            </summary>
+            <param name="year"></param>
+            <param name="month"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.GetXingQi(System.DateTime,System.Int32@,System.Int32@)">
+            <summary>
+            获取指定日期的星期
+            </summary>
+            <param name="day">指定的日期</param>
+            <param name="beginSeg">起始时间段</param>
+            <param name="endSeg">终止时间段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.GetLunarCalendar(System.DateTime,System.String@,System.String@)">
+            <summary>
+             获取对应日期的农历,并带回天干地支生肖 
+            </summary>
+            <param name="dtDay">公历日期</param>
+            <param name="td">天干地支</param>
+            <param name="sx">生肖</param>
+            <returns>农历日期</returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.GetLunarCalendar(System.DateTime)">
+            <summary> 
+            获取对应日期的农历 
+            </summary> 
+            <param name="dtDay">公历日期</param> 
+            <returns>农历日期</returns> 
+        </member>
+        <member name="M:Utilities.TimeUtility.GetSolarTerm(System.DateTime)">
+            <summary>
+            获取指定时间的节气 
+            </summary>
+            <param name="time">公历日期</param>
+            <returns>节气名称</returns>
+        </member>
+        <member name="M:Utilities.TimeUtility.GetConstellationName(System.DateTime)">
+            <summary>
+            计算指定日期的星座名称 
+            </summary>
+            <param name="time">公历日期</param>
+            <returns>星座名称</returns>
+        </member>
+        <member name="T:Utilities.IoHelper">
+            <summary>
+            序列化工具类
+            </summary>
+        </member>
+        <member name="M:Utilities.IoHelper.GetMapPath(System.String)">
+            <summary>
+            获得文件物理路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.IoHelper.SerializeXml(System.Object)">
+            <summary>
+            序列化任意对象（XML）
+            </summary>
+            <param name="obj">要序列化的对象</param>
+            <returns>序列化后的 XML 字符串</returns>
+        </member>
+        <member name="M:Utilities.IoHelper.DeSerializeXml``1(System.String)">
+            <summary>
+            反序列化任意对象（XML）
+            </summary>
+            <param name="xmlString">XML字符串</param>
+            <returns>反序列化后的对象</returns>
+        </member>
+        <member name="M:Utilities.IoHelper.SerializeJson(System.Object)">
+            <summary>
+            将obj对象序列化成JSON字符串
+            </summary>
+            <param name="obj">对象</param>
+            <returns>JSON字符串</returns>
+        </member>
+        <member name="M:Utilities.IoHelper.DeSerializeJson``1(System.String)">
+            <summary>
+            将JSON字符串序反列化为指定T型的对象
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="json">json字符串</param>
+            <returns>T类型的对象</returns>
+        </member>
+        <member name="M:Utilities.IoHelper.Serialize(System.String,System.Object)">
+            <summary>
+            将指定对象obj序列化到文件fn中
+            </summary>
+            <param name="fn">文件路径</param>
+            <param name="obj">对象</param>
+        </member>
+        <member name="M:Utilities.IoHelper.DeSerialize``1(System.String)">
+            <summary>
+            从文件fn中反序列出类型为T的对象
+            </summary>
+            <typeparam name="T">返回的对象类型</typeparam>
+            <param name="fn">文件名称</param>
+            <returns>对象</returns>
+        </member>
+        <member name="M:Utilities.IoHelper.Clone``1(``0)">
+            <summary>
+            获取指定对象的深度克隆对象
+            </summary>
+            <typeparam name="T">被克隆者类型</typeparam>
+            <param name="obj">被克隆者</param>
+            <returns>克隆出来的对象</returns>
+        </member>
+        <member name="M:Utilities.WebHelper.HtmlDecode(System.String)">
+            <summary>
+            HTML解码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.HtmlEncode(System.String)">
+            <summary>
+            HTML编码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.UrlDecode(System.String)">
+            <summary>
+            URL解码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.UrlEncode(System.String)">
+            <summary>
+            URL编码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.DeleteCookie(System.String)">
+            <summary>
+            删除指定名称的Cookie
+            </summary>
+            <param name="name">Cookie名称</param>
+        </member>
+        <member name="M:Utilities.WebHelper.GetCookie(System.String)">
+            <summary>
+            获得指定名称的Cookie值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetCookie(System.String,System.String)">
+            <summary>
+            获得指定名称的Cookie中特定键的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.SetCookie(System.String,System.String)">
+            <summary>
+            设置指定名称的Cookie的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Utilities.WebHelper.SetCookie(System.String,System.String,System.Double)">
+            <summary>
+            设置指定名称的Cookie的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="value">值</param>
+            <param name="expires">过期时间</param>
+        </member>
+        <member name="M:Utilities.WebHelper.SetCookie(System.String,System.String,System.String)">
+            <summary>
+            设置指定名称的Cookie特定键的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Utilities.WebHelper.SetCookie(System.String,System.String,System.String,System.Double)">
+            <summary>
+            设置指定名称的Cookie特定键的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="expires">过期时间</param>
+        </member>
+        <member name="M:Utilities.WebHelper.IsGet">
+            <summary>
+            是否是get请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.IsPost">
+            <summary>
+            是否是post请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.IsAjax">
+            <summary>
+            是否是Ajax请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetQueryString(System.String,System.String)">
+            <summary>
+            获得查询字符串中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetQueryString(System.String)">
+            <summary>
+            获得查询字符串中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetQueryInt(System.String,System.Int32)">
+            <summary>
+            获得查询字符串中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetQueryInt(System.String)">
+            <summary>
+            获得查询字符串中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetFormString(System.String,System.String)">
+            <summary>
+            获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetFormString(System.String)">
+            <summary>
+            获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetFormInt(System.String,System.Int32)">
+            <summary>
+            获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetFormInt(System.String)">
+            <summary>
+            获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestString(System.String,System.String)">
+            <summary>
+            获得请求中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestString(System.String)">
+            <summary>
+            获得请求中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestInt(System.String,System.Int32)">
+            <summary>
+            获得请求中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestInt(System.String)">
+            <summary>
+            获得请求中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetUrlReferrer">
+            <summary>
+            获得上次请求的url
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetHost">
+            <summary>
+            获得请求的主机部分
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetUrl">
+            <summary>
+            获得请求的url
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRawUrl">
+            <summary>
+            获得请求的原始url
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetIP">
+            <summary>
+            获得请求的ip
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetBrowserType">
+            <summary>
+            获得请求的浏览器类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetBrowserName">
+            <summary>
+            获得请求的浏览器名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetBrowserVersion">
+            <summary>
+            获得请求的浏览器版本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetOSType">
+            <summary>
+            获得请求客户端的操作系统类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetOSName">
+            <summary>
+            获得请求客户端的操作系统名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.IsBrowser">
+            <summary>
+            判断是否是浏览器请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.IsMobile">
+            <summary>
+            是否是移动设备请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.IsCrawler">
+            <summary>
+            判断是否是搜索引擎爬虫请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetParmList(System.String)">
+            <summary>
+            获得参数列表
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestData(System.Collections.Generic.SortedDictionary{System.String,System.String},System.String)">
+            <summary>
+            获得http请求数据
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="postData">发送数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestData(System.String,RestSharp.Method,System.Collections.Generic.SortedDictionary{System.String,System.String})">
+            <summary>
+            获得http请求数据
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="method">请求方式</param>
+            <param name="postData">发送数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestData(System.String,RestSharp.Method,System.Collections.Generic.SortedDictionary{System.String,System.String},System.Text.Encoding)">
+            <summary>
+            获得http请求数据
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="method">请求方式</param>
+            <param name="postData">发送数据</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetRequestData(System.String,RestSharp.Method,System.Collections.Generic.SortedDictionary{System.String,System.String},System.Text.Encoding,System.Int32)">
+            <summary>
+            获得http请求数据
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="method">请求方式</param>
+            <param name="postData">发送数据</param>
+            <param name="encoding">编码</param>
+            <param name="timeout">超时值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.GetTrustLevel">
+            <summary>
+            获得当前应用程序的信任级别
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.TryWriteWebConfig">
+            <summary>
+            修改web.config文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.TryWriteGlobalAsax">
+            <summary>
+            修改global.asax文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.WebHelper.RestartAppDomain">
+            <summary>
+            重启应用程序
+            </summary>
+        </member>
+        <member name="T:Utilities.TypeHelper">
+            <summary>
+            类型帮助类
+            </summary>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToInt(System.String,System.Int32)">
+            <summary>
+            将string类型转换成int类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToInt(System.String)">
+            <summary>
+            将string类型转换成int类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToInt(System.Object,System.Int32)">
+            <summary>
+            将object类型转换成int类型
+            </summary>
+            <param name="s">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToInt(System.Object)">
+            <summary>
+            将object类型转换成int类型
+            </summary>
+            <param name="s">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToLong(System.String,System.Int64)">
+            <summary>
+            将string类型转换成int类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToLong(System.String)">
+            <summary>
+            将string类型转换成int类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToLong(System.Object,System.Int64)">
+            <summary>
+            将object类型转换成int类型
+            </summary>
+            <param name="o">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToLong(System.Object)">
+            <summary>
+            将object类型转换成int类型
+            </summary>
+            <param name="o">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToBool(System.String,System.Boolean)">
+            <summary>
+            将string类型转换成bool类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ToBool(System.String)">
+            <summary>
+            将string类型转换成bool类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToBool(System.Object,System.Boolean)">
+            <summary>
+            将object类型转换成bool类型
+            </summary>
+            <param name="s">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToBool(System.Object)">
+            <summary>
+            将object类型转换成bool类型
+            </summary>
+            <param name="s">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToDateTime(System.String,System.DateTime)">
+            <summary>
+            将string类型转换成datetime类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToDateTime(System.String)">
+            <summary>
+            将string类型转换成datetime类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToDateTime(System.Object,System.DateTime)">
+            <summary>
+            将object类型转换成datetime类型
+            </summary>
+            <param name="s">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToDateTime(System.Object)">
+            <summary>
+            将object类型转换成datetime类型
+            </summary>
+            <param name="s">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToDecimal(System.String,System.Decimal)">
+            <summary>
+            将string类型转换成decimal类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.StringToDecimal(System.String)">
+            <summary>
+            将string类型转换成decimal类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToDecimal(System.Object,System.Decimal)">
+            <summary>
+            将object类型转换成decimal类型
+            </summary>
+            <param name="s">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Utilities.TypeHelper.ObjectToDecimal(System.Object)">
+            <summary>
+            将object类型转换成decimal类型
+            </summary>
+            <param name="s">目标对象</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        table,td,th{
+            border:solid 1px black;
+        }
+        table {
+            border-collapse:collapse;
+            width:400px;
+            margin:0 auto;
+        }
+    </style>
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/scripts/echarts.min.js"></script>
+</head>
+<body>
+    <script>
+        function loadData() {
+            $("#data").load("GetExcelData");
+        }
+        CKEDITOR.replace('taSelf');
+    </script>
+    <button onclick="loadData()">加载</button>
+    <div id="data"> 
+    </div>
+    <form id="fmCreateUser1">
+        姓名：<input id="txtUn" type="text" name="un" />
+        <br />
+        照片：<input id="fileUp" type="file" name="up" />
+        <br />
+        个人介绍：<textarea class="ckeditor" id="textarea" name="taSelf"></textarea>
+        <input id="btnSave" type="button" value="保存" onclick="saveUser()" />
+    </form>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script>
+        $.post("/home/SendMessage", function (res) {
+            console.log(res);
+        }, "json");
+        function saveUser() {
+            var fd = new FormData();
+            fd.append("un", $("#txtUn").val());
+            fd.append("up", $('#fileUp')[0].files[0]);
+            $.ajax({
+                url: "/Home/CreateUser",
+                type: "POST",
+                data: fd,
+                success: function (data, textStatus) {
+                    alert(data.message);
+                    console.log(data);
+                },
+                processData: false,  // 不处理数据
+                contentType: false   // 不设置内容类型
+            });
+        }
+        var myChart = echarts.init(document.getElementById("main"));
+        myChart.setOption({
+            title: {
+                text: '异步数据加载示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: []
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: []
+            }]
+        });
+
+        // 异步加载数据
+        $.get('/home/EchartData').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                    data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });
+    </script>
+</body>
+</html>

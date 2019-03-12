@@ -1,0 +1,10 @@
+时间：2019-03-12 17:32:32.2894 级别：ERROR 信息：{ time:'2019/3/12 星期二 17:32:32',msg:'操作已超时。   在 System.Net.Mail.SmtpClient.Send(MailMessage message)
+   在 Utilities.NetHelper.SendEMail(String from, String fromName, String to, String subject, String body, String username, String password, String server, String fujian, Int32 port) 位置 C:\Users\Administrator\Downloads\Shop-master\Shop-master\Utilities\NetHelper.cs:行号 83'} 异常：
+时间：2019-03-12 17:37:43.6684 级别：ERROR 信息：{ time:'2019/3/12 星期二 17:37:43',msg:'操作已超时。   在 System.Net.Mail.SmtpClient.Send(MailMessage message)
+   在 Utilities.NetHelper.SendEMail(String from, String fromName, String to, String subject, String body, String username, String password, String server, String fujian, Int32 port) 位置 C:\Users\Administrator\Downloads\Shop-master\Shop-master\Utilities\NetHelper.cs:行号 83'} 异常：
+时间：2019-03-12 17:40:21.9044 级别：ERROR 信息：{ time:'2019/3/12 星期二 17:40:21',msg:'操作已超时。   在 System.Net.Mail.SmtpClient.Send(MailMessage message)
+   在 Utilities.NetHelper.SendEMail(String from, String fromName, String to, String subject, String body, String username, String password, String server, String fujian, Int32 port) 位置 C:\Users\Administrator\Downloads\Shop-master\Shop-master\Utilities\NetHelper.cs:行号 83'} 异常：
+时间：2019-03-12 17:42:21.3154 级别：ERROR 信息：{ time:'2019/3/12 星期二 17:42:21',msg:'操作已超时。   在 System.Net.Mail.SmtpClient.Send(MailMessage message)
+   在 Utilities.NetHelper.SendEMail(String from, String fromName, String to, String subject, String body, String username, String password, String server, String fujian, Int32 port) 位置 C:\Users\Administrator\Downloads\Shop-master\Shop-master\Utilities\NetHelper.cs:行号 83'} 异常：
+时间：2019-03-12 17:42:52.9434 级别：ERROR 信息：{ time:'2019/3/12 星期二 17:42:52',msg:'操作已超时。   在 System.Net.Mail.SmtpClient.Send(MailMessage message)
+   在 Utilities.NetHelper.SendEMail(String from, String fromName, String to, String subject, String body, String username, String password, String server, String fujian, Int32 port) 位置 C:\Users\Administrator\Downloads\Shop-master\Shop-master\Utilities\NetHelper.cs:行号 83'} 异常：
