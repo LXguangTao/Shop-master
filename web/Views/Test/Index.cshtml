@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <script>
+
+    function info() {
+        $.post("/Test/LogInfo", {}, function (res) {
+            alert(res);
+        }, "text");
+    }
+    function warn() {
+        $.post("/Test/LogWarn", {}, function (res) {
+            alert(res);
+        }, "text");
+    }
+    function error1() {
+        $.post("/Test/LogExp1", {}, function (res) {
+            alert(res);
+        }, "text");
+    }
+    function error2() {
+        $.post("/Test/LogExp2", {}, function (res) {
+            alert(res);
+        }, "text");
+    }
+    </script>
+
+    <button onclick="info()">记录Info等级的日志</button>
+    <button onclick="warn()">记录Warn等级的日志</button>
+    <button onclick="error1()">记录error1等级的日志</button>
+    <button onclick="error2()">记录error2等级的日志</button>
+</body>
+</html>
