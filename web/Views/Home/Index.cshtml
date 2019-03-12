@@ -30,6 +30,7 @@
         }
         CKEDITOR.replace('taSelf');
     </script>
+    <button onclick="sendYzm()">发送验证码</button>
     <button onclick="loadData()">加载</button>
     <div id="data"> 
     </div>
@@ -43,9 +44,15 @@
     </form>
     <div id="main" style="width: 600px;height:400px;"></div>
     <script>
-        $.post("/home/SendMessage", function (res) {
-            console.log(res);
-        }, "json");
+        var i = 0;
+        function sendYzm() {
+            
+            $.post("/home/SendMessage", {i:i}, function (res) {
+                console.log(res);
+            }, "json");
+            i++;
+        }
+        
         function saveUser() {
             var fd = new FormData();
             fd.append("un", $("#txtUn").val());
