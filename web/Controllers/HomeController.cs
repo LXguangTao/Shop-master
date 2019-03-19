@@ -53,13 +53,36 @@ namespace web.Controllers
         [HttpPost]
         public ActionResult CreateUser(String un, HttpPostedFileBase up)
         {
-            string upstring = up.FileName;            
+            List<string> FileType = new List<string>()
+            {
+                "jpg","jpeg","png","gif","svg"
+            };
+            string upstring = up.FileName;
             string upname = DateTime.Now.ToString("yyyyMMddhhmmss");
-            string type = upstring.Substring(upstring.LastIndexOf("."));
+            string type = upstring.Substring(upstring.LastIndexOf(".")+1).ToLower();
             var fileName = Path.Combine(Request.MapPath("~/Content/"));
             try
             {
-                up.SaveAs(fileName+upname+type);
+                if (up.ContentLength> 1024 * 1024)
+                {
+                    return Json(new { success=false,message="文件大于1MB"});
+                }
+                int i = 0;
+                foreach (var item in FileType)
+                {
+                    if (type == item)
+                    {
+                        up.SaveAs(fileName + upname + "." + type);
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                if (i==FileType.Count())
+                {
+                    return Json(new { success=false,message="不是图片文件"});
+                }
                 string d = string.Format("用户【{0}】的照片已经保存成功",un);
                 return Json(new { success=true,message=d,remark="/Content/"+upname+type,s=up.FileName});
             }
