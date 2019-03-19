@@ -33,13 +33,15 @@ namespace web.Controllers
             string content = StringHelper.GetRandomNumAndLetters(5);
             byte[] img = ImageHelper.CreateImage(content, 100, 30);
             Session["yzm"] = content;
+            HttpCookie yzm = new HttpCookie("yzm",content);
+            Response.Cookies.Add(yzm);
             return File(img, "image/jpeg");
         }
         [HttpPost]
         public ActionResult YanZheng(string yzm)
         {
             string session = Session["yzm"].ToString();
-            if (yzm == session)
+            if (yzm == session && yzm==Request.Cookies["yzm"].Value)
             {
                 return Json(new { message ="验证码正确"});
             }
