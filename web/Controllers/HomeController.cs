@@ -19,8 +19,7 @@ namespace web.Controllers
         [LogExceptionFilter]
         public ActionResult Index()
         {
-            string a = null;
-            string b;
+           
             return View();
         }
         public ActionResult Error()
@@ -50,6 +49,12 @@ namespace web.Controllers
             sb.AppendFormat("</tbody></table>");
             return Content(sb.ToString());
         }
+        /// <summary>
+        /// 创建用户
+        /// </summary>
+        /// <param name="un"></param>
+        /// <param name="up"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult CreateUser(String un, HttpPostedFileBase up)
         {
@@ -63,7 +68,7 @@ namespace web.Controllers
             var fileName = Path.Combine(Request.MapPath("~/Content/"));
             try
             {
-                if (up.ContentLength> 1024 * 1024)
+                if (up.ContentLength> 1024 *1024)
                 {
                     return Json(new { success=false,message="文件大于1MB"});
                 }
