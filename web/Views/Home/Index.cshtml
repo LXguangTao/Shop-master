@@ -61,8 +61,12 @@
                 url: "/Home/CreateUser",
                 type: "POST",
                 data: fd,
-                success: function (data, textStatus) {
-                    alert(data.message);
+                success: function (data) {
+                    if (data.success) {
+                        alert(data.message);
+                    } else {
+                        alert("保存失败"+data.message);
+                    }
                     console.log(data);
                 },
                 processData: false,  // 不处理数据
