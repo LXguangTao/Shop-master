@@ -28,6 +28,11 @@ namespace web.Controllers
             //上传成功后，我们还需要通过以下的一个脚本把图片返回到第一个tab选项
             return Content("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\");</script>");
         }
+        /// <summary>
+        /// 生成验证码
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult GetRandCode(int? id)
         {
             string content = StringHelper.GetRandomNumAndLetters(5);
@@ -37,6 +42,11 @@ namespace web.Controllers
             Response.Cookies.Add(yzm);
             return File(img, "image/jpeg");
         }
+        /// <summary>
+        /// 验证验证码
+        /// </summary>
+        /// <param name="yzm"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult YanZheng(string yzm)
         {
@@ -50,6 +60,10 @@ namespace web.Controllers
                 return Json(new { message ="验证码错误"});
             }
         }
+        /// <summary>
+        /// 发邮件
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult SendEmail()
         {
@@ -72,6 +86,16 @@ namespace web.Controllers
             {
                 return Json(new { success=false,msg=ex.Message});
             }
+        }
+        /// <summary>
+        /// 生成二维码
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetQRcode(int? id)
+        {
+            string strcode = Request.Params["code"];
+            byte[] code = ImageHelper.CreateQRCode(strcode);
+            return File(code,"image/jpeg");
         }
     }
 }
