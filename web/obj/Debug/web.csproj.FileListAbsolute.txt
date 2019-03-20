@@ -214,3 +214,4 @@ C:\Users\Administrator\Desktop\Shop-master\web\bin\zh-Hans\System.Web.Mvc.resour
 C:\Users\Administrator\Desktop\Shop-master\web\obj\Debug\web.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Shop-master\web\obj\Debug\web.dll
 C:\Users\Administrator\Desktop\Shop-master\web\obj\Debug\web.pdb
+C:\Users\Administrator\Desktop\Shop-master\web\bin\QRCoder.dll
