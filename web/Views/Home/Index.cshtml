@@ -30,8 +30,9 @@
         }
         CKEDITOR.replace('taSelf');
     </script>
-    <button onclick="sendYzm()">发送验证码</button>
-    <button onclick="loadData()">加载</button>
+    <input type="text" id="yzm" />
+    <button onclick="sendYzm()">发送语音验证码</button>
+    @*<button onclick="loadData()">加载</button>*@
     <div id="data"> 
     </div>
     <form id="fmCreateUser1">
@@ -47,8 +48,12 @@
         var i = 0;
         function sendYzm() {
             
-            $.post("/home/SendMessage", {i:i}, function (res) {
+            $.post("/home/SendMessage", { i: i, who: $("#yzm").val() }, function (res) {
+                var obj = JSON.parse(res.data);
                 console.log(res);
+                console.log(obj);
+                alert(obj.reason);
+               
             }, "json");
             i++;
         }
