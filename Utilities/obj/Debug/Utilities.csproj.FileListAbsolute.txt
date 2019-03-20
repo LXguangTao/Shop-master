@@ -69,3 +69,4 @@ C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\RestSharp.xml
 C:\Users\Administrator\Desktop\Shop-master\Utilities\obj\Debug\Utilities.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Shop-master\Utilities\obj\Debug\Utilities.dll
 C:\Users\Administrator\Desktop\Shop-master\Utilities\obj\Debug\Utilities.pdb
+C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\QRCoder.dll
