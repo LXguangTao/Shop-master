@@ -104,6 +104,13 @@
             <param name="imgHeight">高度</param>
             <returns></returns>
         </member>
+        <member name="M:Utilities.ImageHelper.CreateQRCode(System.String)">
+            <summary>
+            生成QR二维码
+            </summary>
+            <param name="strCode">二维码所含内容</param>
+            <returns></returns>
+        </member>
         <member name="M:Utilities.ImageHelper.GetImage(System.String)">
             <summary>
             获取指定路径的位图对象
