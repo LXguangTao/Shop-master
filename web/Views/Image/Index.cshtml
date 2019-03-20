@@ -23,10 +23,21 @@
     <input type="button" value="submit" onclick="clicks()" />
     
     <br/>
+    <img src="GetQRcode/1" id="codeImage"/>
+    <br />
+    <input type="text" id="qrcode"/><input type="button" value="生成二维码" onclick="CreateCode()" />
+    <br />
     请输入邮箱 <input type="text" name="email" id="email" value="" /><br/>
     请输入内容 <textarea id="content"></textarea>
     <input type="button" id="sendEmail" onclick="sendEmail()" value="发送" />
     <script>
+        var i = 1;
+        function CreateCode() {
+            //$.get("/Image/GetQRcode", { code: $("#qrcode").val() }, function (res) {
+            $("#codeImage").attr("src", "/Image/GetQRcode?code=" + $("#qrcode").val());
+            //}, "text");
+           
+        }
         function clicks() {
             console.log("click");
             $.post("/Image/YanZheng", { yzm: $("#text").val() }, function (res) {
@@ -35,7 +46,7 @@
             }, "json");
             reRandCode();
         }
-        var i = 1;
+        
         function sendEmail() {
             var email = $("#email").val();
             var content = $("#content").val();
