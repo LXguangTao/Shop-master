@@ -17,6 +17,15 @@
             <param name="head">获取哪些字段的值(例如：编号,姓名,入学时间),不提供时返回所有列</param>
             <returns>承载数据的DataSet</returns>
         </member>
+        <member name="M:Utilities.ExcelHelper.ExcelToDataTable(System.String,System.String,System.Boolean)">
+            <summary>
+            将excel中的数据导入到DataTable中
+            </summary>
+            <param name="fileName">excel的文件名（完整路径）</param>
+            <param name="sheetName">excel工作薄sheet的名称</param>
+            <param name="isFirstRowColumn">第一行是否是DataTable的列名</param>
+            <returns>返回的DataTable</returns>
+        </member>
         <member name="T:Utilities.Extensions">
             <summary>
             扩展代码之用
@@ -108,7 +117,7 @@
             <summary>
             生成QR二维码
             </summary>
-            <param name="strCode">二维码所含内容</param>
+            <param name="strCode">二维码所含内容</param>        
             <returns></returns>
         </member>
         <member name="M:Utilities.ImageHelper.GetImage(System.String)">

@@ -29,25 +29,15 @@ namespace web.Controllers
         public ActionResult GetExcelData()
         {
             string url = Server.MapPath("~/Content/test.xlsx");
-            DataSet ds = ExcelHelper.ImportDataFromExcell(url);
-            StringBuilder sb = new StringBuilder("<table><thead>");
+            
+           //StringBuilder sb = new StringBuilder("<table><thead>");
             DataTable dt = ExcelHelper.ExcelToDataTable(url,"商品",true);
-            foreach (DataColumn t in dt.Columns)
-            {
-                sb.AppendFormat("<th>{0}</th>",t.ColumnName);
-            }
-            sb.AppendFormat("</thead><tbody>");
-            foreach (DataRow w in dt.Rows)
-            {
-                sb.AppendFormat("<tr>");
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
-                    sb.AppendFormat("<td>{0}</td>",w[i]);
-                }
-                sb.AppendFormat("</tr>");
-            }
-            sb.AppendFormat("</tbody></table>");
-            return Content(sb.ToString());
+            //foreach (DataColumn t in dt.Columns)
+            //{
+            //    sb.AppendFormat("<th>{0}</th>", t.ColumnName);
+            //}
+            //sb.AppendFormat("</thead><tbody>");
+            return View(dt);
         }
         /// <summary>
         /// 创建用户

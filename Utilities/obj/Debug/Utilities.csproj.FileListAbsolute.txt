@@ -70,3 +70,9 @@ C:\Users\Administrator\Desktop\Shop-master\Utilities\obj\Debug\Utilities.csprojR
 C:\Users\Administrator\Desktop\Shop-master\Utilities\obj\Debug\Utilities.dll
 C:\Users\Administrator\Desktop\Shop-master\Utilities\obj\Debug\Utilities.pdb
 C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\QRCoder.dll
+C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\NPOI.dll
+C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\NPOI.OOXML.dll
+C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\Administrator\Desktop\Shop-master\Utilities\bin\Debug\ICSharpCode.SharpZipLib.xml

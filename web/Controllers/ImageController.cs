@@ -18,7 +18,7 @@ namespace web.Controllers
         public ActionResult Upload(HttpPostedFileBase upload)
         {
             var fileName = System.IO.Path.GetFileName(upload.FileName);
-            var filePhysicalPath = Server.MapPath("~/Content/" + fileName);//我把它保存在网站根目录的 upload 文件夹
+            var filePhysicalPath = Server.MapPath("~/Content/" + fileName);//我把它保存在网站根目录的 content 文件夹
 
             upload.SaveAs(filePhysicalPath);
 
@@ -90,10 +90,11 @@ namespace web.Controllers
         /// <summary>
         /// 生成二维码
         /// </summary>
-        /// <returns></returns>
-        public ActionResult GetQRcode(int? id)
+        /// <returns></returns>        
+        public ActionResult GetQRcode(HttpPostedFileBase filename)
         {
             string strcode = Request.Params["code"];
+            //var Filename = Server.MapPath("~/Content/"+filename.FileName);
             byte[] code = ImageHelper.CreateQRCode(strcode);
             return File(code,"image/jpeg");
         }

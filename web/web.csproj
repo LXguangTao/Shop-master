@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="400.html" />
+    <Content Include="Content\111.jpg" />
     <Content Include="demo.html" />
     <Content Include="Global.asax" />
     <Content Include="log.txt" />
@@ -543,6 +544,7 @@
     <Content Include="Views\Image\Index.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Home\GetExcelData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

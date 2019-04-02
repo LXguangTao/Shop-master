@@ -7,6 +7,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using QRCoder;
+using System.Runtime.Remoting.Contexts;
+using System.Web;
 
 namespace Utilities
 {
@@ -66,10 +68,11 @@ namespace Utilities
 
             return buffer;
         }
+
         /// <summary>
         /// 生成QR二维码
         /// </summary>
-        /// <param name="strCode">二维码所含内容</param>
+        /// <param name="strCode">二维码所含内容</param>        
         /// <returns></returns>
         public static byte[] CreateQRCode(string strCode)
         {
@@ -77,15 +80,23 @@ namespace Utilities
             {
                 strCode = "此二维码无内容";
             }
+            
             // 生成二维码的内容
             //string strCode = "http://www.walys.com";
             QRCodeGenerator qrGenerator = new QRCoder.QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(strCode, QRCodeGenerator.ECCLevel.Q);
             QRCode qrcode = new QRCode(qrCodeData);
             // qrcode.GetGraphic 方法可参考最下发“补充说明”
-            Bitmap qrCodeImage = qrcode.GetGraphic(5, Color.Black, Color.White, null, 15, 6, false);
             MemoryStream ms = new MemoryStream();
-
+            Bitmap qrCodeImage = qrcode.GetGraphic(5, Color.Black, Color.White, null, 15, 6, false);
+            //if (filename!=null)
+            //{
+            System.Drawing.Image img = System.Drawing.Image.FromFile(System.Web.HttpContext.Current.Server.MapPath("~/Content/111.jpg"));
+            
+            Bitmap icon = new Bitmap(img);
+                
+                icon.Save(ms, ImageFormat.Jpeg);
+            //}           
             qrCodeImage.Save(ms, ImageFormat.Jpeg);
             // 如果想保存图片 可使用  qrCodeImage.Save(filePath);
             var buffer = ms.ToArray();
