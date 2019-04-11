@@ -752,6 +752,15 @@
             <param name="sourceString"></param>
             <returns></returns>
         </member>
+        <member name="M:Utilities.SendTelCode.SendMsg(System.String,System.String,System.String)">
+            <summary>
+            发送语音验证码
+            </summary>
+            <param name="tel">电话号码</param>
+            <param name="count">播放次数</param>
+            <param name="content">验证码内容</param>
+            <returns></returns>
+        </member>
         <member name="T:Utilities.SqlHelper">
             <summary>
             SqlHelper 的摘要说明。

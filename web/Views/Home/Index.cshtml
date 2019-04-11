@@ -44,17 +44,18 @@
     <div id="main" style="width: 600px;height:400px;"></div>
     <script>
         
-        var i = 0;
+      
         function sendYzm() {
             
-            $.post("/home/SendMessage", { i: i, who: $("#yzm").val() }, function (res) {
-                var obj = JSON.parse(res.data);
+            $.post("/home/SendMessage", {who: $("#yzm").val() }, function (res) {
+                //var obj = JSON.parse(res);
                 console.log(res);
-                console.log(obj);
-                alert(obj.reason);
-               
+                if (res.error_code == 0) {
+                    alert("发送成功");
+                } else {
+                    alert("发送失败："+res.reason);
+                }
             }, "json");
-            i++;
         }
         
         function saveUser() {
